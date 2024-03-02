@@ -81,7 +81,6 @@ class _PopupContent extends StatefulWidget {
 }
 
 class _PopupContentState extends State<_PopupContent> {
-  late FlutterTts flutterTts;
   late int currentIndex;
   Timer? timer;
   late bool isAutoNextEnabled;
@@ -89,11 +88,9 @@ class _PopupContentState extends State<_PopupContent> {
   @override
   void initState() {
     super.initState();
-    flutterTts = FlutterTts();
     currentIndex = widget.currentIndex;
     isAutoNextEnabled = widget.isAutoNextEnabled;
 
-    _speakDescription();
     if (isAutoNextEnabled) {
       timer = Timer.periodic(const Duration(seconds: 3), (Timer t) {
         _nextItem();
@@ -107,22 +104,10 @@ class _PopupContentState extends State<_PopupContent> {
     super.dispose();
   }
 
-  Future<void> _speakDescription() async {
-    final currentItem = widget.items[currentIndex];
-    await flutterTts.setLanguage("mn-MN");
-    await flutterTts.speak(currentItem.title);
-    await flutterTts.speak(currentItem.description);
-  }
-
-  Future<void> _speakText(String text) async {
-    await flutterTts.speak(text);
-  }
-
   void _previousItem() {
     setState(() {
       if (currentIndex > 0) {
         currentIndex--;
-        _speakDescription();
       }
     });
   }
@@ -131,7 +116,6 @@ class _PopupContentState extends State<_PopupContent> {
     setState(() {
       if (currentIndex < widget.items.length - 1) {
         currentIndex++;
-        _speakDescription();
       }
     });
   }
@@ -174,17 +158,13 @@ class _PopupContentState extends State<_PopupContent> {
                           color: Colors.black,
                           size: 40,
                         ),
-                        onPressed: () {
-                          _speakText(currentItem.title);
-                        },
+                        onPressed: () {},
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
-                    onTap: () {
-                      _speakText(currentItem.description);
-                    },
+                    onTap: () {},
                     child: SvgPicture.asset(
                       currentItem.iconAsset,
                       width: 200,
