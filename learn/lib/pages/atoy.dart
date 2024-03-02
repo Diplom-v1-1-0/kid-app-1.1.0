@@ -234,14 +234,14 @@ class ItemData {
   });
 }
 
-class AtoZ extends StatefulWidget {
-  const AtoZ({Key? key}) : super(key: key);
+class atoy extends StatefulWidget {
+  const atoy({Key? key}) : super(key: key);
 
   @override
-  State<AtoZ> createState() => _AtoZState();
+  State<atoy> createState() => _atoyState();
 }
 
-class _AtoZState extends State<AtoZ> {
+class _atoyState extends State<atoy> {
   bool isTimerEnabled = false;
 
   List<ItemData> items = [
@@ -522,5 +522,5 @@ class _AtoZState extends State<AtoZ> {
 }
 
 void main() {
-  runApp(const AtoZ());
+  runApp(const atoy());
 }
