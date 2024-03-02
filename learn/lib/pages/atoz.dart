@@ -9,11 +9,11 @@ class ItemTile extends StatelessWidget {
   final bool isTimerEnabled;
 
   const ItemTile({
-    Key? key,
+    super.key,
     required this.index,
     required this.items,
     required this.isTimerEnabled,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +71,10 @@ class _PopupContent extends StatefulWidget {
   final bool isAutoNextEnabled;
 
   const _PopupContent({
-    Key? key,
     required this.items,
     required this.currentIndex,
     required this.isAutoNextEnabled,
-  }) : super(key: key);
+  });
 
   @override
   _PopupContentState createState() => _PopupContentState();
@@ -84,7 +83,7 @@ class _PopupContent extends StatefulWidget {
 class _PopupContentState extends State<_PopupContent> {
   late FlutterTts flutterTts;
   late int currentIndex;
-  late Timer? timer;
+  Timer? timer;
   late bool isAutoNextEnabled;
 
   @override
@@ -110,7 +109,7 @@ class _PopupContentState extends State<_PopupContent> {
 
   Future<void> _speakDescription() async {
     final currentItem = widget.items[currentIndex];
-    await flutterTts.setLanguage("EN-IN");
+    await flutterTts.setLanguage("mn-MN");
     await flutterTts.speak(currentItem.title);
     await flutterTts.speak(currentItem.description);
   }
@@ -208,11 +207,11 @@ class _PopupContentState extends State<_PopupContent> {
                     children: [
                       ElevatedButton(
                         onPressed: _previousItem,
-                        child: const Text('Prev'),
+                        child: const Text('Өмнөх'),
                       ),
                       ElevatedButton(
                         onPressed: _nextItem,
-                        child: const Text('Next'),
+                        child: const Text('Дараах'),
                       ),
                     ],
                   ),
@@ -226,7 +225,7 @@ class _PopupContentState extends State<_PopupContent> {
                       Navigator.pop(context);
                     },
                     child: const Text(
-                      'Close',
+                      'Хаах',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -268,159 +267,224 @@ class _AtoZState extends State<AtoZ> {
   List<ItemData> items = [
     ItemData(
       iconAsset: 'assets/images/apple.svg',
-      title: 'A',
-      description: 'Apple',
+      title: 'А',
+      description: 'Алим',
       backgroundColor: const Color.fromARGB(115, 171, 171, 171),
     ),
     ItemData(
       iconAsset: 'assets/images/ball.svg',
-      title: 'B',
-      description: 'Ball',
+      title: 'Б',
+      description: 'Бөмбөг',
       backgroundColor: const Color.fromARGB(115, 215, 118, 118),
     ),
     ItemData(
+      iconAsset: 'assets/images/vase.svg',
+      title: 'В',
+      description: 'Ваар',
+      backgroundColor: const Color.fromARGB(120, 100, 150, 50),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/pig.svg',
+      title: 'Г',
+      description: 'Гахай',
+      backgroundColor: const Color.fromARGB(120, 238, 0, 255),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/kettle.svg',
+      title: 'Д',
+      description: 'Данх',
+      backgroundColor: const Color.fromARGB(120, 164, 212, 246),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/egypt.svg',
+      title: 'Е',
+      description: 'Египт',
+      backgroundColor: const Color.fromARGB(120, 232, 190, 0),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/europe.svg',
+      title: 'Ё',
+      description: 'Ёвроп',
+      backgroundColor: const Color.fromARGB(120, 44, 75, 97),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/fruits.svg',
+      title: 'Ж',
+      description: 'Жимс',
+      backgroundColor: const Color.fromARGB(120, 221, 222, 115),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/elephant.svg',
+      title: 'З',
+      description: 'Заан',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(115, 66, 173, 127),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/irish.svg',
+      title: 'И',
+      description: 'Ирланд',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 20, 255, 145),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/pc.svg',
+      title: 'К',
+      description: 'Компьютер',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 96, 58, 230),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/candless.svg',
+      title: 'Л',
+      description: 'Лаа',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 227, 106, 0),
+    ),
+    ItemData(
       iconAsset: 'assets/images/cat.svg',
-      title: 'C',
-      description: 'Cat',
+      title: 'М',
+      description: 'Муур',
       backgroundColor: const Color.fromARGB(194, 130, 243, 69),
     ),
     ItemData(
       iconAsset: 'assets/images/dog.svg',
-      title: 'D',
-      description: 'Dog',
+      title: 'Н',
+      description: 'Нохой',
       backgroundColor: const Color.fromARGB(115, 215, 199, 118),
     ),
     ItemData(
-      iconAsset: 'assets/images/elephant.svg',
-      title: 'E',
-      description: 'Elephant',
-      backgroundColor: const Color.fromARGB(115, 118, 215, 173),
+      iconAsset: 'assets/images/tree.svg',
+      title: 'О',
+      description: 'Ой',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 147, 226, 184),
     ),
     ItemData(
-      iconAsset: 'assets/images/fish.svg',
-      title: 'F',
-      description: 'Fish',
-      backgroundColor: const Color.fromARGB(115, 150, 118, 215),
-    ),
-    ItemData(
-      iconAsset: 'assets/images/grapes.svg',
-      title: 'G',
-      backgroundColor: const Color.fromARGB(115, 215, 118, 175),
-      description: 'Grapes',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/horse.svg',
-      title: 'H',
-      backgroundColor: const Color.fromARGB(115, 157, 215, 118),
-      description: 'Horse',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/icecream.svg',
-      title: 'I',
-      backgroundColor: const Color.fromARGB(221, 176, 102, 220),
-      description: 'Ice-Cream',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/joker.svg',
-      title: 'J',
-      description: 'Joker',
-      backgroundColor: const Color.fromARGB(208, 112, 181, 206),
-    ),
-    ItemData(
-      iconAsset: 'assets/images/king.svg',
-      title: 'K',
-      backgroundColor: const Color.fromARGB(115, 171, 215, 118),
-      description: 'King',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/lion.svg',
-      title: 'L',
-      description: 'Lion',
-      backgroundColor: const Color.fromARGB(236, 235, 229, 53),
-    ),
-    ItemData(
-      iconAsset: 'assets/images/money.svg',
-      title: 'M',
-      description: 'Money',
-      backgroundColor: const Color.fromARGB(115, 118, 189, 215),
-    ),
-    ItemData(
-      iconAsset: 'assets/images/nest.svg',
-      title: 'N',
-      description: 'Nest',
-      backgroundColor: const Color.fromARGB(115, 118, 215, 121),
-    ),
-    ItemData(
-      iconAsset: 'assets/images/orange.svg',
-      title: 'O',
-      description: 'Orange',
-      backgroundColor: const Color.fromARGB(115, 215, 189, 118),
-    ),
-    ItemData(
-      iconAsset: 'assets/images/parrot.svg',
-      title: 'P',
-      backgroundColor: const Color.fromARGB(115, 120, 118, 215),
-      description: 'Parrot',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/queen.svg',
-      title: 'Q',
-      backgroundColor: const Color.fromARGB(115, 215, 118, 118),
-      description: 'Queen',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/rabbit.svg',
-      title: 'R',
-      description: 'Rabbit',
-      backgroundColor: const Color.fromARGB(174, 134, 218, 191),
-    ),
-    ItemData(
-      iconAsset: 'assets/images/shiva.svg',
-      title: 'S',
-      backgroundColor: const Color.fromARGB(170, 156, 216, 145),
-      description: 'Shiva',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/table.svg',
-      title: 'T',
-      backgroundColor: const Color.fromARGB(180, 138, 64, 228),
-      description: 'Table',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/umbrella.svg',
-      title: 'U',
-      backgroundColor: const Color.fromARGB(189, 212, 127, 220),
-      description: 'Umbrella',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/van.svg',
-      title: 'V',
-      backgroundColor: const Color.fromARGB(115, 215, 118, 118),
-      description: 'Van',
-    ),
-    ItemData(
-      iconAsset: 'assets/images/window.svg',
-      title: 'W',
-      backgroundColor: const Color.fromARGB(246, 255, 194, 25),
-      description: 'Window',
+      iconAsset: 'assets/images/pants.svg',
+      title: 'Ө',
+      description: 'Өмд',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 233, 195, 161),
     ),
     ItemData(
       iconAsset: 'assets/images/xerox.svg',
-      title: 'X',
+      title: 'П',
       backgroundColor: const Color.fromARGB(115, 0, 236, 71),
-      description: 'Xerox',
+      description: 'Принтер',
     ),
     ItemData(
-      iconAsset: 'assets/images/yellow.svg',
-      title: 'Y',
-      backgroundColor: const Color.fromARGB(115, 9, 255, 230),
-      description: 'Yellow',
+      iconAsset: 'assets/images/radio.svg',
+      title: 'Р',
+      description: 'Радио',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 61, 50, 40),
     ),
     ItemData(
-      iconAsset: 'assets/images/zero.svg',
-      title: 'Z',
-      backgroundColor: const Color.fromARGB(155, 81, 0, 255),
-      description: 'Zero',
+      iconAsset: 'assets/images/moon.svg',
+      title: 'С',
+      description: 'Сар',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 134, 57, 217),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/parrot.svg',
+      title: 'Т',
+      backgroundColor: const Color.fromARGB(115, 120, 118, 215),
+      description: 'Тоть',
+    ),
+    ItemData(
+      iconAsset: 'assets/images/grapes.svg',
+      title: 'У',
+      backgroundColor: const Color.fromARGB(115, 215, 118, 175),
+      description: 'Усан үзэм',
+    ),
+    ItemData(
+      iconAsset: 'assets/images/nest.svg',
+      title: 'Ү',
+      description: 'Үүр',
+      backgroundColor: const Color.fromARGB(115, 118, 215, 121),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/flash.svg',
+      title: 'Ф',
+      description: 'Флаш',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 224, 212, 237),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/king.svg',
+      title: 'Х',
+      backgroundColor: const Color.fromARGB(115, 171, 215, 118),
+      description: 'Хаан',
+    ),
+    ItemData(
+      iconAsset: 'assets/images/window.svg',
+      title: 'Ц',
+      backgroundColor: const Color.fromARGB(246, 255, 194, 25),
+      description: 'Цонх',
+    ),
+    ItemData(
+      iconAsset: 'assets/images/sledge.svg',
+      title: 'Ч',
+      description: 'Чарга',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 221, 142, 52),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/table.svg',
+      title: 'Ш',
+      backgroundColor: const Color.fromARGB(180, 138, 64, 228),
+      description: 'Ширээ',
+    ),
+    ItemData(
+      iconAsset: 'assets/images/soup.svg',
+      title: 'Щ',
+      description: 'Борщ',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(120, 234, 172, 101),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/spreads.svg',
+      title: 'Ъ',
+      description: 'Таръя',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(249, 43, 228, 23),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/horse.svg',
+      title: 'Ь',
+      description: 'Морь',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(255, 233, 145, 46),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/elephant.svg',
+      title: 'Ы',
+      description: 'Зааны тугал',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(255, 103, 248, 185),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/butterfly.svg',
+      title: 'Э',
+      description: 'Эрвээхэй',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(255, 238, 0, 255),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/hoodie.svg',
+      title: 'Ю',
+      description: 'Юүдэнтэй \nцамц',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(255, 255, 114, 114),
+    ),
+    ItemData(
+      iconAsset: 'assets/images/deer.svg',
+      title: 'Я',
+      description: 'Янзага',
+      // ignore: prefer_const_constructors
+      backgroundColor: Color.fromARGB(255, 253, 200, 23),
     ),
   ];
 
@@ -431,7 +495,7 @@ class _AtoZState extends State<AtoZ> {
         title: Row(
           children: [
             const Text(
-              'A-Z',
+              'А-Я',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 10),

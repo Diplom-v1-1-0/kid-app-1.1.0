@@ -23,7 +23,7 @@ class ShapesPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const Text(
-              'Page Under Construction.\nIt will not take much time.',
+              'Уншиж байна түр хүлээнэ үү.',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ],

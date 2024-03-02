@@ -74,14 +74,6 @@ class MyDrawer extends StatelessWidget {
               context: context,
             ),
             _buildListTile(
-              icon: Icons.back_hand_rounded,
-              title: "Эд эрхтэн",
-              onTap: () {
-                Navigator.pushNamed(context, AllRoutes.partsRoute);
-              },
-              context: context,
-            ),
-            _buildListTile(
               icon: Icons.sunny,
               title: "Гараг эрхэс",
               onTap: () {

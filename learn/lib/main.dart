@@ -4,7 +4,6 @@ import 'package:learn/pages/about.dart';
 import 'package:learn/pages/atoz.dart';
 import 'package:learn/pages/birds.dart';
 import 'package:learn/pages/animals.dart';
-import 'package:learn/pages/parts.dart';
 import 'package:learn/pages/shapes.dart';
 import 'package:learn/pages/solar.dart';
 import 'package:learn/utils/routes.dart';
@@ -19,7 +18,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final AdaptiveThemeMode? savedThemeMode;
 
-  const MyApp({Key? key, this.savedThemeMode}) : super(key: key);
+  const MyApp({super.key, this.savedThemeMode});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,6 @@ class MyApp extends StatelessWidget {
           AllRoutes.atozRoute: (context) => const AtoZ(),
           AllRoutes.birdsRoute: (context) => BirdsPage(),
           AllRoutes.shapesRoute: (context) => const ShapesPage(),
-          AllRoutes.partsRoute: (context) => const PartsPage(),
           AllRoutes.solarRoute: (context) => const SolarPage(),
           AllRoutes.animalRoute: (context) => AnimalsPage(),
           AllRoutes.aboutRoute: (context) => const AboutPage(),
@@ -49,7 +47,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -58,7 +56,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool _isImageClicked1 = false;
   bool _isImageClicked2 = false;
-  bool _isImageClicked3 = false;
   bool _isImageClicked4 = false;
   bool _isDarkTheme = false;
   @override
@@ -66,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Home',
+          'Эхлэл',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -124,10 +121,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const SizedBox(height: 20),
               const Text(
-                'ALPHABETS',
+                'Цагаан толгой',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const Text("Learn A to Z with pronunciation and an example"),
+              const Text("А-Я хүртэл үсэгнүүдийг сурцгаая"),
               const SizedBox(
                 height: 20,
               ),
@@ -164,51 +161,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const SizedBox(height: 20),
               const Text(
-                'ANIMALS',
+                'Амьтан',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const Text("Learn about animals and their voices"),
+              const Text("Амьтад дуу чимээг таньж сурах"),
               const SizedBox(
                 height: 20,
               ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _isImageClicked3 = !_isImageClicked3;
-                  });
-                  Future.delayed(const Duration(milliseconds: 300), () {
-                    Navigator.pushNamed(context, AllRoutes.partsRoute);
-                  });
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                  height: _isImageClicked3 ? 325 : 350,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.black, width: 2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                    image: const DecorationImage(
-                      image: AssetImage('assets/body/body.jpg'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'BODY PARTS',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              const Text("Know about body parts and their pronunciation."),
-              const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -242,10 +201,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const SizedBox(height: 20),
               const Text(
-                'BIRDS',
+                'Шувуу',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const Text("Look out for Birds with their sounds."),
+              const Text(
+                  "Шувуунуудын нэрийг мэдэж ямар дуу чимээ гаргадыг мэдэх"),
             ],
           ),
         ),

@@ -22,136 +22,93 @@ class Bird {
 class BirdsPage extends StatelessWidget {
   final List<Bird> birds = [
     Bird(
-      name: 'Sparrow',
+      name: 'бор шувуу',
       svgAsset: 'assets/birds/Sparrow.svg',
       soundAsset: 'assets/birds/Sparrow.mp3',
       backgroundColor: const Color.fromARGB(193, 76, 175, 79),
     ),
     Bird(
-      name: 'Robin',
-      svgAsset: 'assets/birds/Robin.svg',
-      soundAsset: 'assets/birds/Robin.mp3',
-      backgroundColor: const Color.fromARGB(194, 157, 82, 222),
-    ),
-    Bird(
-      name: 'Crow',
+      name: 'Хэрээ',
       svgAsset: 'assets/birds/Crow.svg',
       soundAsset: 'assets/birds/Crow.mp3',
       backgroundColor: const Color.fromARGB(193, 76, 207, 222),
     ),
     Bird(
-      name: 'Seagull',
+      name: 'цахлай',
       svgAsset: 'assets/birds/Seagull.svg',
       soundAsset: 'assets/birds/Seagull.mp3',
       backgroundColor: const Color.fromARGB(193, 21, 234, 28),
     ),
     Bird(
-      name: 'Duck',
+      name: 'нугас',
       svgAsset: 'assets/birds/Duck.svg',
       soundAsset: 'assets/birds/Duck.mp3',
       backgroundColor: const Color.fromARGB(193, 226, 221, 70),
     ),
     Bird(
-      name: 'Hen',
+      name: 'тахиа',
       svgAsset: 'assets/birds/Hen.svg',
       soundAsset: 'assets/birds/Hen.mp3',
       backgroundColor: const Color.fromARGB(138, 48, 59, 48),
     ),
     Bird(
-      name: 'Eagle',
+      name: 'бүргэд',
       svgAsset: 'assets/birds/Eagle.svg',
       soundAsset: 'assets/birds/Eagle.mp3',
       backgroundColor: const Color.fromARGB(154, 221, 214, 209),
     ),
     Bird(
-      name: 'Owl',
+      name: 'шар шувуу',
       svgAsset: 'assets/birds/Owl.svg',
       soundAsset: 'assets/birds/Owl.mp3',
       backgroundColor: const Color.fromARGB(193, 76, 175, 79),
     ),
     Bird(
-      name: 'Hummingbird',
+      name: 'хулин шувуу',
       svgAsset: 'assets/birds/Hummingbird.svg',
       soundAsset: 'assets/birds/Hummingbird.mp3',
       backgroundColor: const Color.fromARGB(151, 40, 137, 248),
     ),
     Bird(
-      name: 'Parrot',
+      name: 'тоть',
       svgAsset: 'assets/birds/Parrot.svg',
       soundAsset: 'assets/birds/Parrot.mp3',
       backgroundColor: const Color.fromARGB(193, 240, 241, 170),
     ),
     Bird(
-      name: 'Swan',
+      name: 'хун',
       svgAsset: 'assets/birds/Swan.svg',
       soundAsset: 'assets/birds/Swan.mp3',
       backgroundColor: const Color.fromARGB(193, 125, 176, 127),
     ),
     Bird(
-      name: 'Goose',
+      name: 'Галуу',
       svgAsset: 'assets/birds/Goose.svg',
       soundAsset: 'assets/birds/Goose.mp3',
       backgroundColor: const Color.fromARGB(139, 175, 140, 76),
     ),
     Bird(
-      name: 'Woodpecker',
+      name: 'Тоншуул',
       svgAsset: 'assets/birds/Woodpecker.svg',
       soundAsset: 'assets/birds/Woodpecker.mp3',
       backgroundColor: const Color.fromARGB(157, 251, 151, 0),
     ),
     Bird(
-      name: 'Kingfisher',
-      svgAsset: 'assets/birds/Kingfisher.svg',
-      soundAsset: 'assets/birds/Kingfisher.mp3',
-      backgroundColor: const Color.fromARGB(193, 187, 74, 178),
-    ),
-    Bird(
-      name: 'Ostrich',
+      name: 'Тэмээн хяруул',
       svgAsset: 'assets/birds/Ostrich.svg',
       soundAsset: 'assets/birds/Ostrich.mp3',
       backgroundColor: const Color.fromARGB(193, 182, 221, 252),
     ),
     Bird(
-      name: 'Vulture',
+      name: 'тас шувуу',
       svgAsset: 'assets/birds/Vulture.svg',
       soundAsset: 'assets/birds/Vulture.mp3',
       backgroundColor: const Color.fromARGB(98, 243, 201, 33),
-    ),
-    Bird(
-      name: 'Maina',
-      svgAsset: 'assets/birds/Maina.svg',
-      soundAsset: 'assets/birds/Maina.mp3',
-      backgroundColor: const Color.fromARGB(255, 73, 179, 63),
-    ),
-    Bird(
-      name: 'Bulbul',
-      svgAsset: 'assets/birds/Bulbul.svg',
-      soundAsset: 'assets/birds/Bulbul.mp3',
-      backgroundColor: const Color.fromARGB(156, 128, 222, 243),
-    ),
-    Bird(
-      name: 'Koel',
-      svgAsset: 'assets/birds/Koel.svg',
-      soundAsset: 'assets/birds/Koel.mp3',
-      backgroundColor: const Color.fromARGB(232, 141, 255, 93),
-    ),
-    Bird(
-      name: 'Baya',
-      svgAsset: 'assets/birds/Baya.svg',
-      soundAsset: 'assets/birds/Baya.mp3',
-      backgroundColor: const Color.fromARGB(193, 106, 190, 101),
-    ),
-    Bird(
-      name: 'Bagula',
-      svgAsset: 'assets/birds/Bagula.svg',
-      soundAsset: 'assets/birds/Bagula.mp3',
-      backgroundColor: const Color.fromARGB(156, 248, 248, 248),
     ),
   ];
 
   final FlutterTts flutterTts = FlutterTts();
   final AudioPlayer audioPlayer = AudioPlayer();
-
   BirdsPage({Key? key}) : super(key: key);
 
   @override
@@ -235,24 +192,6 @@ class _BirdWidgetState extends State<BirdWidget> {
             ),
           ),
           const SizedBox(height: 20),
-          IconButton.outlined(
-            highlightColor: Colors.amber,
-            onPressed: () {
-              readName(
-                bird.name,
-              );
-            },
-            icon: const Icon(Icons.volume_up_outlined),
-          ),
-          Text(
-            bird.name,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 60,
-              fontFamily: 'Comic',
-            ),
-          ),
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -265,7 +204,7 @@ class _BirdWidgetState extends State<BirdWidget> {
                 onPressed: () {
                   _playBirdSound(bird.soundAsset);
                 },
-                child: const Text('Play Sound'),
+                child: const Text('Дуу сонсох'),
               ),
               const SizedBox(width: 20),
               IconButton(
@@ -282,10 +221,5 @@ class _BirdWidgetState extends State<BirdWidget> {
   Future<void> _playBirdSound(String soundAsset) async {
     await widget.audioPlayer.setAsset(soundAsset);
     await widget.audioPlayer.play();
-  }
-
-  Future<void> readName(String name) async {
-    await widget.flutterTts.setLanguage("EN-IN");
-    await widget.flutterTts.speak(name);
   }
 }
