@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:just_audio/just_audio.dart';
 
 class Animal {
@@ -143,7 +142,6 @@ class AnimalsPage extends StatelessWidget {
     ),
   ];
 
-  final FlutterTts flutterTts = FlutterTts();
   final AudioPlayer audioPlayer = AudioPlayer();
 
   AnimalsPage({super.key});
@@ -159,68 +157,14 @@ class AnimalsPage extends StatelessWidget {
       ),
       body: ListView.builder(
         itemCount: animals.length,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              _showAnimalPopup(context, animals[index], index);
-            },
-            child: Container(
-              margin: const EdgeInsets.all(5.0),
-              padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 1.0),
-                borderRadius: BorderRadius.circular(8.0),
-                color: animals[index].backgroundColor,
-              ),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: SvgPicture.asset(animals[index].svgAsset),
-                  ),
-                  const SizedBox(width: 28.0),
-                  Text(
-                    animals[index].name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30.0,
-                      fontFamily: 'Comic',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
+        itemBuilder: (context, index) {},
       ),
-    );
-  }
-
-  Future<void> _showAnimalPopup(
-      BuildContext context, Animal animal, int currentIndex) async {
-    await flutterTts.setVolume(1.0);
-    await flutterTts.setSpeechRate(.5);
-    await flutterTts.setPitch(1.0);
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AnimalPopup(
-          animal: animal,
-          flutterTts: flutterTts,
-          audioPlayer: audioPlayer,
-          animals: animals,
-          currentIndex: currentIndex,
-        );
-      },
     );
   }
 }
 
 class AnimalPopup extends StatefulWidget {
   Animal animal;
-  final FlutterTts flutterTts;
   final AudioPlayer audioPlayer;
   final List<Animal> animals;
 
@@ -229,7 +173,6 @@ class AnimalPopup extends StatefulWidget {
   AnimalPopup({
     super.key,
     required this.animal,
-    required this.flutterTts,
     required this.audioPlayer,
     required this.animals,
     required this.currentIndex,
@@ -342,9 +285,5 @@ class _AnimalPopupState extends State<AnimalPopup> {
 
   Future<void> _stopAnimalSound() async {
     await widget.audioPlayer.stop();
-  }
-
-  Future<void> _speakAnimalName(String name) async {
-    await widget.flutterTts.speak(name);
   }
 }
