@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:learn/pages/about.dart';
-import 'package:learn/pages/atoz.dart';
+import 'package:learn/pages/atoy.dart';
 import 'package:learn/pages/birds.dart';
 import 'package:learn/pages/animals.dart';
 import 'package:learn/pages/shapes.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         home: const MyHomePage(),
         routes: {
           AllRoutes.homeRoute: (context) => const MyHomePage(),
-          AllRoutes.atozRoute: (context) => const AtoZ(),
+          AllRoutes.atozRoute: (context) => const atoy(),
           AllRoutes.birdsRoute: (context) => BirdsPage(),
           AllRoutes.shapesRoute: (context) => const ShapesPage(),
           AllRoutes.solarRoute: (context) => const SolarPage(),

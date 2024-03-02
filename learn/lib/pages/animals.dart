@@ -201,7 +201,6 @@ class AnimalsPage extends StatelessWidget {
       BuildContext context, Animal animal, int currentIndex) async {
     await flutterTts.setVolume(1.0);
     await flutterTts.setSpeechRate(.5);
-    await flutterTts.setLanguage("EN-IN");
     await flutterTts.setPitch(1.0);
 
     showDialog(
@@ -252,12 +251,6 @@ class _AnimalPopupState extends State<AnimalPopup> {
           Text(
             widget.animal.name,
             style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          IconButton(
-            onPressed: () {
-              _speakAnimalName(widget.animal.name);
-            },
-            icon: const Icon(Icons.volume_up),
           ),
         ],
       ),
