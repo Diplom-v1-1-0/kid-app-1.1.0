@@ -224,12 +224,14 @@ class ItemData {
   final String iconAsset;
   final String title;
   final String description;
+  // final String soundAsset;
   final Color backgroundColor;
 
   ItemData({
     required this.iconAsset,
     required this.title,
     required this.description,
+    // this.soundAsset
     required this.backgroundColor,
   });
 }
@@ -455,7 +457,7 @@ class _atoyState extends State<atoy> {
     ItemData(
       iconAsset: 'assets/images/hoodie.svg',
       title: 'Ю',
-      description: 'Юүдэнтэй \nцамц',
+      description: 'Юүдэнтэй цамц',
       // ignore: prefer_const_constructors
       backgroundColor: Color.fromARGB(255, 255, 114, 114),
     ),

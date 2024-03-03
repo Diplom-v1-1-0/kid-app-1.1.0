@@ -1,7 +1,6 @@
-// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api, deprecated_member_use, must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:just_audio/just_audio.dart';
 
 class Animal {
@@ -39,18 +38,6 @@ class AnimalsPage extends StatelessWidget {
       backgroundColor: const Color.fromARGB(193, 76, 207, 222),
     ),
     Animal(
-      name: 'Үхэр',
-      svgAsset: 'assets/images/cow.svg',
-      soundAsset: 'assets/sounds/cow_sound.mp3',
-      backgroundColor: const Color.fromARGB(157, 251, 0, 0),
-    ),
-    Animal(
-      name: 'Үнэг',
-      svgAsset: 'assets/images/fox.svg',
-      soundAsset: 'assets/sounds/fox_sound.mp3',
-      backgroundColor: const Color.fromARGB(193, 21, 234, 28),
-    ),
-    Animal(
       name: 'Анааш',
       svgAsset: 'assets/images/giraffe.svg',
       soundAsset: 'assets/sounds/giraffe_sound.mp3',
@@ -63,7 +50,7 @@ class AnimalsPage extends StatelessWidget {
       backgroundColor: const Color.fromARGB(138, 48, 59, 48),
     ),
     Animal(
-      name: 'Кенгуру',
+      name: 'Kенгуру',
       svgAsset: 'assets/images/kangaroo.svg',
       soundAsset: 'assets/sounds/kangaroo_sound.mp3',
       backgroundColor: const Color.fromARGB(154, 221, 214, 209),
@@ -142,9 +129,10 @@ class AnimalsPage extends StatelessWidget {
     ),
   ];
 
+  final FlutterTts flutterTts = FlutterTts();
   final AudioPlayer audioPlayer = AudioPlayer();
 
-  AnimalsPage({super.key});
+  AnimalsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -157,26 +145,84 @@ class AnimalsPage extends StatelessWidget {
       ),
       body: ListView.builder(
         itemCount: animals.length,
-        itemBuilder: (context, index) {},
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              _showAnimalPopup(context, animals[index], index);
+            },
+            child: Container(
+              margin: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, width: 1.0),
+                borderRadius: BorderRadius.circular(8.0),
+                color: animals[index].backgroundColor,
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: SvgPicture.asset(animals[index].svgAsset),
+                  ),
+                  const SizedBox(width: 28.0),
+                  Text(
+                    animals[index].name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30.0,
+                      fontFamily: 'Comic',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
+    );
+  }
+
+  Future<void> _showAnimalPopup(
+      BuildContext context, Animal animal, int currentIndex) async {
+    await flutterTts.setVolume(1.0);
+    await flutterTts.setSpeechRate(.5);
+    await flutterTts.setLanguage("mn-MN");
+    await flutterTts.setPitch(1.0);
+
+    showDialog(
+      // ignore: use_build_context_synchronously
+      context: context,
+      builder: (BuildContext context) {
+        return AnimalPopup(
+          animal: animal,
+          flutterTts: flutterTts,
+          audioPlayer: audioPlayer,
+          animals: animals,
+          currentIndex: currentIndex,
+        );
+      },
     );
   }
 }
 
+// ignore: must_be_immutable
 class AnimalPopup extends StatefulWidget {
   Animal animal;
+  final FlutterTts flutterTts;
   final AudioPlayer audioPlayer;
   final List<Animal> animals;
 
   int currentIndex;
 
   AnimalPopup({
-    super.key,
+    Key? key,
     required this.animal,
+    required this.flutterTts,
     required this.audioPlayer,
     required this.animals,
     required this.currentIndex,
-  });
+  }) : super(key: key);
 
   @override
   _AnimalPopupState createState() => _AnimalPopupState();
@@ -195,6 +241,12 @@ class _AnimalPopupState extends State<AnimalPopup> {
             widget.animal.name,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
+          IconButton(
+            onPressed: () {
+              _speakAnimalName(widget.animal.name);
+            },
+            icon: const Icon(Icons.volume_up),
+          ),
         ],
       ),
       content: Column(
@@ -211,6 +263,7 @@ class _AnimalPopupState extends State<AnimalPopup> {
               height: 200,
               child: SvgPicture.asset(
                 widget.animal.svgAsset,
+                // ignore: deprecated_member_use
                 color: isTapped ? const Color.fromARGB(81, 118, 96, 94) : null,
               ),
             ),
@@ -220,7 +273,7 @@ class _AnimalPopupState extends State<AnimalPopup> {
             onPressed: () {
               _playAnimalSound(widget.animal.soundAsset);
             },
-            child: const Text('Play Sound'),
+            child: const Text('Дуу тоглуулах'),
           ),
           Row(
             children: [
@@ -253,7 +306,7 @@ class _AnimalPopupState extends State<AnimalPopup> {
             Navigator.of(context).pop();
           },
           child: const Text(
-            'Close',
+            'Хаах',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -285,5 +338,9 @@ class _AnimalPopupState extends State<AnimalPopup> {
 
   Future<void> _stopAnimalSound() async {
     await widget.audioPlayer.stop();
+  }
+
+  Future<void> _speakAnimalName(String name) async {
+    await widget.flutterTts.speak(name);
   }
 }

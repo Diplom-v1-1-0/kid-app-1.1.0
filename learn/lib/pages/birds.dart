@@ -52,12 +52,6 @@ class BirdsPage extends StatelessWidget {
       backgroundColor: const Color.fromARGB(138, 48, 59, 48),
     ),
     Bird(
-      name: 'бүргэд',
-      svgAsset: 'assets/birds/Eagle.svg',
-      soundAsset: 'assets/birds/Eagle.mp3',
-      backgroundColor: const Color.fromARGB(154, 221, 214, 209),
-    ),
-    Bird(
       name: 'шар шувуу',
       svgAsset: 'assets/birds/Owl.svg',
       soundAsset: 'assets/birds/Owl.mp3',
@@ -92,12 +86,6 @@ class BirdsPage extends StatelessWidget {
       svgAsset: 'assets/birds/Woodpecker.svg',
       soundAsset: 'assets/birds/Woodpecker.mp3',
       backgroundColor: const Color.fromARGB(157, 251, 151, 0),
-    ),
-    Bird(
-      name: 'Тэмээн хяруул',
-      svgAsset: 'assets/birds/Ostrich.svg',
-      soundAsset: 'assets/birds/Ostrich.mp3',
-      backgroundColor: const Color.fromARGB(193, 182, 221, 252),
     ),
     Bird(
       name: 'тас шувуу',
@@ -192,6 +180,24 @@ class _BirdWidgetState extends State<BirdWidget> {
             ),
           ),
           const SizedBox(height: 20),
+          IconButton.outlined(
+            highlightColor: Colors.amber,
+            onPressed: () {
+              readName(
+                bird.name,
+              );
+            },
+            icon: const Icon(Icons.volume_up_outlined),
+          ),
+          Text(
+            bird.name,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 60,
+              fontFamily: 'Comic',
+            ),
+          ),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -204,7 +210,7 @@ class _BirdWidgetState extends State<BirdWidget> {
                 onPressed: () {
                   _playBirdSound(bird.soundAsset);
                 },
-                child: const Text('Дуу сонсох'),
+                child: const Text('Дуу тоглуулах'),
               ),
               const SizedBox(width: 20),
               IconButton(
@@ -221,5 +227,10 @@ class _BirdWidgetState extends State<BirdWidget> {
   Future<void> _playBirdSound(String soundAsset) async {
     await widget.audioPlayer.setAsset(soundAsset);
     await widget.audioPlayer.play();
+  }
+
+  Future<void> readName(String name) async {
+    await widget.flutterTts.setLanguage("mn-MN");
+    await widget.flutterTts.speak(name);
   }
 }
