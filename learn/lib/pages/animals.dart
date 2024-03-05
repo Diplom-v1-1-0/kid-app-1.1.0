@@ -5,6 +5,7 @@ import 'package:just_audio/just_audio.dart';
 
 class Animal {
   final String name;
+  final String nameAssets;
   final String svgAsset;
   final String soundAsset;
   final Color backgroundColor;
@@ -14,6 +15,7 @@ class Animal {
     required this.svgAsset,
     required this.soundAsset,
     required this.backgroundColor,
+    required this.nameAssets,
   });
 }
 
@@ -22,72 +24,84 @@ class AnimalsPage extends StatelessWidget {
     Animal(
       name: 'Муур',
       svgAsset: 'assets/images/cat.svg',
+      nameAssets: 'assets/sounds/cat.wav',
       soundAsset: 'assets/sounds/cat_sound.wav',
       backgroundColor: const Color.fromARGB(193, 76, 175, 79),
     ),
     Animal(
       name: 'Буга',
       svgAsset: 'assets/images/deer.svg',
+      nameAssets: 'assets/sounds/buga.wav',
       soundAsset: 'assets/sounds/deer_sound.mp3',
       backgroundColor: const Color.fromARGB(194, 157, 82, 222),
     ),
     Animal(
       name: 'Баавгай',
       svgAsset: 'assets/images/bear.svg',
+      nameAssets: 'assets/sounds/baavgai.wav',
       soundAsset: 'assets/sounds/bear_sound.mp3',
       backgroundColor: const Color.fromARGB(193, 76, 207, 222),
     ),
     Animal(
       name: 'Анааш',
       svgAsset: 'assets/images/giraffe.svg',
+      nameAssets: 'assets/sounds/anaash.wav',
       soundAsset: 'assets/sounds/giraffe_sound.mp3',
       backgroundColor: const Color.fromARGB(193, 226, 221, 70),
     ),
     Animal(
       name: 'Ямаа',
       svgAsset: 'assets/images/goat.svg',
+      nameAssets: 'assets/sounds/ymaa.wav',
       soundAsset: 'assets/sounds/goat_sound.mp3',
       backgroundColor: const Color.fromARGB(138, 48, 59, 48),
     ),
     Animal(
       name: 'Kенгуру',
       svgAsset: 'assets/images/kangaroo.svg',
+      nameAssets: 'assets/sounds/kenguru.wav',
       soundAsset: 'assets/sounds/kangaroo_sound.mp3',
       backgroundColor: const Color.fromARGB(154, 221, 214, 209),
     ),
     Animal(
       name: 'Сармагчин',
       svgAsset: 'assets/images/monkey.svg',
+      nameAssets: 'assets/sounds/sarmagchin.wav',
       soundAsset: 'assets/sounds/monkey_sound.mp3',
       backgroundColor: const Color.fromARGB(193, 76, 175, 79),
     ),
     Animal(
       name: 'Гахай',
       svgAsset: 'assets/images/pig.svg',
+      nameAssets: 'assets/sounds/pig.wav',
       soundAsset: 'assets/sounds/pig_sound.mp3',
       backgroundColor: const Color.fromARGB(151, 40, 137, 248),
     ),
     Animal(
       name: 'Хонь',
       svgAsset: 'assets/images/sheep.svg',
+      nameAssets: 'assets/sounds/honi.wav',
       soundAsset: 'assets/sounds/sheep_sound.mp3',
       backgroundColor: const Color.fromARGB(193, 240, 241, 170),
     ),
     Animal(
       name: 'Могой',
       svgAsset: 'assets/images/snake.svg',
+      nameAssets: 'assets/sounds/mogoi.wav',
       soundAsset: 'assets/sounds/snake_sound.mp3',
       backgroundColor: const Color.fromARGB(193, 125, 176, 127),
     ),
     Animal(
       name: 'Хэрэм',
       svgAsset: 'assets/images/squirrel.svg',
+      nameAssets: 'assets/sounds/herem.wav',
       soundAsset: 'assets/sounds/squirrel_sound.mp3',
       backgroundColor: const Color.fromARGB(139, 175, 140, 76),
     ),
     Animal(
       name: 'Бар',
       svgAsset: 'assets/images/tiger.svg',
+      nameAssets: 'assets/sounds/bar.wav',
       soundAsset: 'assets/sounds/tiger_sound.mp3',
       backgroundColor: const Color.fromARGB(157, 251, 151, 0),
     ),
@@ -95,35 +109,41 @@ class AnimalsPage extends StatelessWidget {
       name: 'Алаг тахь',
       svgAsset: 'assets/images/zebra.svg',
       soundAsset: 'assets/sounds/zebra_sound.mp3',
+      nameAssets: 'assets/sounds/alagtahi.wav',
       backgroundColor: const Color.fromARGB(193, 187, 74, 178),
     ),
     Animal(
       name: 'Нохой',
       svgAsset: 'assets/images/dog.svg',
+      nameAssets: 'assets/sounds/dog.wav',
       soundAsset: 'assets/sounds/dog_sound.mp3',
       backgroundColor: const Color.fromARGB(193, 33, 149, 243),
     ),
     Animal(
       name: 'Заан',
       svgAsset: 'assets/images/elephant.svg',
+      nameAssets: 'assets/sounds/elephant.wav',
       soundAsset: 'assets/sounds/elephant_sound.mp3',
       backgroundColor: const Color.fromARGB(193, 182, 221, 252),
     ),
     Animal(
       name: 'Морь',
       svgAsset: 'assets/images/horse.svg',
+      nameAssets: 'assets/sounds/horse.wav',
       soundAsset: 'assets/sounds/horse_sound.mp3',
       backgroundColor: const Color.fromARGB(98, 243, 201, 33),
     ),
     Animal(
       name: 'Арслан',
       svgAsset: 'assets/images/lion.svg',
+      nameAssets: 'assets/sounds/arslan.wav',
       soundAsset: 'assets/sounds/lion_sound.mp3',
       backgroundColor: const Color.fromARGB(193, 43, 197, 35),
     ),
     Animal(
       name: 'Туулай',
       svgAsset: 'assets/images/rabbit.svg',
+      nameAssets: 'assets/sounds/tuulai.wav',
       soundAsset: 'assets/sounds/rabbit_sound.mp3',
       backgroundColor: const Color.fromARGB(156, 243, 33, 236),
     ),
@@ -244,7 +264,7 @@ class _AnimalPopupState extends State<AnimalPopup> {
           ),
           IconButton(
             onPressed: () {
-              _speakAnimalName(widget.animal.name);
+              _playAnimalSound(widget.animal.nameAssets);
             },
             icon: const Icon(Icons.volume_up),
           ),
@@ -339,9 +359,5 @@ class _AnimalPopupState extends State<AnimalPopup> {
 
   Future<void> _stopAnimalSound() async {
     await widget.audioPlayer.stop();
-  }
-
-  Future<void> _speakAnimalName(String name) async {
-    await widget.flutterTts.speak(name);
   }
 }

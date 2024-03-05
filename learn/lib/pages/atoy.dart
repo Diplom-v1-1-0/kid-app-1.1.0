@@ -434,7 +434,7 @@ class _atoyState extends State<atoy> {
       title: 'У',
       titleAsset: 'assets/sounds/У.wav',
       backgroundColor: const Color.fromARGB(115, 215, 118, 175),
-      descAsset: 'assets/sounds/usanvzem.wav',
+      descAsset: 'assets/sounds/jims.wav',
       description: 'Усан үзэм',
     ),
     ItemData(

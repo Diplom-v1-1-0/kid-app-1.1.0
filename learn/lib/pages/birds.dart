@@ -8,12 +8,14 @@ import 'package:just_audio/just_audio.dart';
 class Bird {
   final String name;
   final String svgAsset;
+  final String nameAssets;
   final String soundAsset;
   final Color backgroundColor;
 
   Bird({
     required this.name,
     required this.svgAsset,
+    required this.nameAssets,
     required this.soundAsset,
     required this.backgroundColor,
   });
@@ -24,72 +26,84 @@ class BirdsPage extends StatelessWidget {
     Bird(
       name: 'бор шувуу',
       svgAsset: 'assets/birds/Sparrow.svg',
+      nameAssets: 'assets/sounds/borshuwuu.wav',
       soundAsset: 'assets/birds/Sparrow.mp3',
       backgroundColor: const Color.fromARGB(193, 76, 175, 79),
     ),
     Bird(
       name: 'Хэрээ',
       svgAsset: 'assets/birds/Crow.svg',
+      nameAssets: 'assets/sounds/heree.wav',
       soundAsset: 'assets/birds/Crow.mp3',
       backgroundColor: const Color.fromARGB(193, 76, 207, 222),
     ),
     Bird(
       name: 'цахлай',
       svgAsset: 'assets/birds/Seagull.svg',
+      nameAssets: 'assets/sounds/tsahlai.wav',
       soundAsset: 'assets/birds/Seagull.mp3',
       backgroundColor: const Color.fromARGB(193, 21, 234, 28),
     ),
     Bird(
       name: 'нугас',
       svgAsset: 'assets/birds/Duck.svg',
+      nameAssets: 'assets/sounds/nugas.wav',
       soundAsset: 'assets/birds/Duck.mp3',
       backgroundColor: const Color.fromARGB(193, 226, 221, 70),
     ),
     Bird(
       name: 'тахиа',
       svgAsset: 'assets/birds/Hen.svg',
+      nameAssets: 'assets/sounds/tahia.wav',
       soundAsset: 'assets/birds/Hen.mp3',
       backgroundColor: const Color.fromARGB(138, 48, 59, 48),
     ),
     Bird(
       name: 'шар шувуу',
       svgAsset: 'assets/birds/Owl.svg',
+      nameAssets: 'assets/sounds/shar.wav',
       soundAsset: 'assets/birds/Owl.mp3',
       backgroundColor: const Color.fromARGB(193, 76, 175, 79),
     ),
     Bird(
       name: 'хулин шувуу',
       svgAsset: 'assets/birds/Hummingbird.svg',
+      nameAssets: 'assets/sounds/hulin.wav',
       soundAsset: 'assets/birds/Hummingbird.mp3',
       backgroundColor: const Color.fromARGB(151, 40, 137, 248),
     ),
     Bird(
       name: 'тоть',
       svgAsset: 'assets/birds/Parrot.svg',
+      nameAssets: 'assets/sounds/toti.wav',
       soundAsset: 'assets/birds/Parrot.mp3',
       backgroundColor: const Color.fromARGB(193, 240, 241, 170),
     ),
     Bird(
       name: 'хун',
       svgAsset: 'assets/birds/Swan.svg',
+      nameAssets: 'assets/sounds/hun.wav',
       soundAsset: 'assets/birds/Swan.mp3',
       backgroundColor: const Color.fromARGB(193, 125, 176, 127),
     ),
     Bird(
       name: 'Галуу',
       svgAsset: 'assets/birds/Goose.svg',
+      nameAssets: 'assets/sounds/galuu.wav',
       soundAsset: 'assets/birds/Goose.mp3',
       backgroundColor: const Color.fromARGB(139, 175, 140, 76),
     ),
     Bird(
       name: 'Тоншуул',
       svgAsset: 'assets/birds/Woodpecker.svg',
+      nameAssets: 'assets/sounds/tonshuul.wav',
       soundAsset: 'assets/birds/Woodpecker.mp3',
       backgroundColor: const Color.fromARGB(157, 251, 151, 0),
     ),
     Bird(
       name: 'тас шувуу',
       svgAsset: 'assets/birds/Vulture.svg',
+      nameAssets: 'assets/sounds/tas.wav',
       soundAsset: 'assets/birds/Vulture.mp3',
       backgroundColor: const Color.fromARGB(98, 243, 201, 33),
     ),
@@ -183,9 +197,7 @@ class _BirdWidgetState extends State<BirdWidget> {
           IconButton.outlined(
             highlightColor: Colors.amber,
             onPressed: () {
-              readName(
-                bird.name,
-              );
+              _playBirdSound(bird.nameAssets);
             },
             icon: const Icon(Icons.volume_up_outlined),
           ),
