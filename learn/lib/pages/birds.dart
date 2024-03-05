@@ -104,7 +104,7 @@ class BirdsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Birds',
+          'Шувуу',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),

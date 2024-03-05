@@ -139,7 +139,7 @@ class AnimalsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Animals',
+          'Амьтан',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
@@ -225,6 +225,7 @@ class AnimalPopup extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _AnimalPopupState createState() => _AnimalPopupState();
 }
 
