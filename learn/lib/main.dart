@@ -5,6 +5,7 @@ import 'package:learn/pages/atoy.dart';
 import 'package:learn/pages/birds.dart';
 import 'package:learn/pages/animals.dart';
 import 'package:learn/pages/flipcard.dart';
+import 'package:learn/pages/games.dart';
 import 'package:learn/pages/shapes.dart';
 import 'package:learn/pages/solar.dart';
 import 'package:learn/utils/routes.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
           AllRoutes.solarRoute: (context) => const SolarPage(),
           AllRoutes.animalRoute: (context) => AnimalsPage(),
           AllRoutes.aboutRoute: (context) => const AboutPage(),
+          AllRoutes.flipgameRout: (context) => const GamesPage(),
         },
       ),
     );
