@@ -66,22 +66,6 @@ class MyDrawer extends StatelessWidget {
               context: context,
             ),
             _buildListTile(
-              icon: Icons.pentagon_outlined,
-              title: "Дүрс",
-              onTap: () {
-                Navigator.pushReplacementNamed(context, AllRoutes.shapesRoute);
-              },
-              context: context,
-            ),
-            _buildListTile(
-              icon: Icons.sunny,
-              title: "Гараг эрхэс",
-              onTap: () {
-                Navigator.pushReplacementNamed(context, AllRoutes.solarRoute);
-              },
-              context: context,
-            ),
-            _buildListTile(
               icon: Icons.question_mark_outlined,
               title: "Бидний тухай",
               onTap: () {

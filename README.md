@@ -54,3 +54,69 @@ export PATH=$HOME/development/flutter/bin:$PATH
 
  sudo gem install cocoapods
 ```
+
+
+#### Windows
+
+```sh
+choco install dart-sdk
+
+scoop install dart-sdk
+```
+
+```sh
+google chrome android studio болон visual studio community-г суулгаж C++ болон Android sdk CmdTools-ийш татаж авна
+```
+
+#### Debain based linux and Arch linux
+
+```sh
+sudo apt install dart-sdk
+
+android studio татна google-chrome татна
+```
+
+```sh
+yay -S dart-sdk
+
+android studio татна google-chrome татна
+```
+
+```sh
+yay -Sy android-sdk android-sdk-build-tools android-sdk-cmdline-tools-latest android-platform android-sdk-platform-tools
+
+sudo cp -R /opt/android-sdk ~
+
+cd ~
+sudo chown -R yourusername:yourgroupname android-sdk
+
+### set Envoirment
+
+export ANDROID_HOME=$HOME/android-sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+yes | flutter doctor --android-licenses
+```
+
+</details>
+
+
+## 🚀 Логик <a name = "logiv"></a>
+
+- Бусад апп хүүхдийг ганцааранг сурах зориулалтай байсан бөгөөд үнэ төлбөртэй байсан уг апп нь хүүхдийг эцэг эхтэй хамтад нь сууж гэр бүлийн харилцааг илүү дэмжих зориулалтай бөгөөд бага насны хүүхдэд өөрт таарсан контент болон хэрэгцээтэй зүйлээ сурж боловсроход нь туслах юм
+
+
+
+## 🔧 Ажлуулах <a name = "run"></a>
+
+#### 1. flutter-ийг ажилуулахад command нь flutter run гэсэн коммандыг directory доторх terminal дээрээ бичиж өгнө
+
+
+```
+flutter run
+```
+
+```
+эсхүл vsCode дээрээ extensions суулгад шууд F5-ийг дарна ажилуулна.
+```
