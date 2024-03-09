@@ -31,8 +31,26 @@ Flutter бол Google-ийн бүтээсэн нээлттэй эхийн UI п�
 
 #### Macos
 
-
+Macos дээр суулгаж байгаа тохиолдолд xcode болон pod-ийг заавал түрүүлж суулгасан байх шаардлагатай
 
 ```sh
 brew install dart-sdk
+```
+
+```sh
+ sudo softwareupdate --install-rosetta --agree-to-license
+```
+
+```sh
+https://docs.flutter.dev/get-started/install/macos/desktop?tab=download
+
+unzip ~/development/flutter_sdk_v1.0.0.zip -d ~/development/
+
+export PATH=$HOME/development/flutter/bin:$PATH
+
+ sudo sh -c 'xcode-select -s /Applications/Xcode.app/Contents/Developer && xcodebuild -runFirstLaunch'
+
+ sudo xcodebuild -license
+
+ sudo gem install cocoapods
 ```
