@@ -66,6 +66,13 @@ class MyDrawer extends StatelessWidget {
               context: context,
             ),
             _buildListTile(
+                icon: Icons.games,
+                title: "Тоглоом Танин мэдэхүй",
+                onTap: () {
+                  Navigator.pushNamed(context, AllRoutes.flipgameRout);
+                },
+                context: context),
+            _buildListTile(
               icon: Icons.question_mark_outlined,
               title: "Бидний тухай",
               onTap: () {
