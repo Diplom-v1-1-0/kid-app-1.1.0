@@ -4,7 +4,6 @@ import 'package:learn/pages/about.dart';
 import 'package:learn/pages/atoy.dart';
 import 'package:learn/pages/birds.dart';
 import 'package:learn/pages/animals.dart';
-import 'package:learn/pages/flipcard.dart';
 import 'package:learn/pages/games.dart';
 import 'package:learn/pages/shapes.dart';
 import 'package:learn/pages/solar.dart';

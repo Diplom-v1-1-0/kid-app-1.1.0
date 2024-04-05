@@ -152,7 +152,7 @@ class AnimalsPage extends StatelessWidget {
   final FlutterTts flutterTts = FlutterTts();
   final AudioPlayer audioPlayer = AudioPlayer();
 
-  AnimalsPage({Key? key}) : super(key: key);
+  AnimalsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -236,13 +236,13 @@ class AnimalPopup extends StatefulWidget {
   int currentIndex;
 
   AnimalPopup({
-    Key? key,
+    super.key,
     required this.animal,
     required this.flutterTts,
     required this.audioPlayer,
     required this.animals,
     required this.currentIndex,
-  }) : super(key: key);
+  });
 
   @override
   // ignore: library_private_types_in_public_api
